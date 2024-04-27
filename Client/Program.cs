@@ -1,11 +1,31 @@
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using OpenSilverWithSmartComponents.Client;
+﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Windows;
 
-var builder = WebAssemblyHostBuilder.CreateDefault(args);
-builder.RootComponents.Add<App>("#app");
-builder.RootComponents.Add<HeadOutlet>("head::after");
+namespace OpenSilverWithSmartComponents.Browser
+{
+    public class Program
+    {
+        public static async Task Main(string[] args)
+        {
+            var builder = WebAssemblyHostBuilder.CreateDefault(args);
+            builder.RootComponents.Add<App>("#app");
+            BlazorForOpenSilver.Initializer.Initialize(builder);
+            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            var host = builder.Build();
+            await host.RunAsync();
+        }
 
-await builder.Build().RunAsync();
+        public static void RunApplication()
+        {
+            Application.RunApplication(() =>
+            {
+                var app = new OpenSilverWithSmartComponents.App();
+            });
+        }
+    }
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartComponents;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace OpenSilverWithSmartComponents
             this.InitializeComponent();
 
             // Enter construction logic here...
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"Name: {txtName.Text}, Email: {txtEmail.Text}, Password: {txtPassword.Password}");
         }
     }
 }

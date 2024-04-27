@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.ResponseCompression;
+using SmartComponents.Inference.OpenAI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddSmartComponents()
+    .WithInferenceBackend<OpenAIInferenceBackend>();
 
 var app = builder.Build();
 

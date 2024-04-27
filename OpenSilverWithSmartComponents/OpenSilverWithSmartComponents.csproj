@@ -1,12 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <EnableDefaultItems>false</EnableDefaultItems>
     <DefineSilverlight>true</DefineSilverlight>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="SmartComponents.AspNetCore.Components" Version="0.1.0-preview10146" />
     <PackageReference Include="OpenSilver" Version="2.1.0" />
   </ItemGroup>
 
@@ -21,7 +22,12 @@
 
   <ItemGroup>
     <Compile Include="App.xaml.cs" />
+    <Compile Include="FormWrapper.cs" />
     <Compile Include="MainPage.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Documents\GitHub\OpenSilver.Blazor\src\BlazorForOpenSilver\BlazorForOpenSilver.csproj" />
   </ItemGroup>
 
 </Project>
