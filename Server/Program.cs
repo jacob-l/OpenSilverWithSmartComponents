@@ -26,7 +26,7 @@ else
 
 app.UseHttpsRedirection();
 
-app.UseBlazorFrameworkFiles();
+app.UseBlazorFrameworkFiles(); //Configures to use Blazor WebAssembly as a frontend
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -34,6 +34,6 @@ app.UseRouting();
 
 app.MapRazorPages();
 app.MapControllers();
-app.MapFallbackToFile("index.html");
+app.MapFallbackToFile("index.html"); //Use index.html from Blazor WebAssembly
 
 app.Run();

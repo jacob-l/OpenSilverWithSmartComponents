@@ -13,7 +13,7 @@ namespace OpenSilverWithSmartComponents.Browser
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
-            BlazorForOpenSilver.Initializer.Initialize(builder);
+            OpenSilver.Compatibility.Blazor.Initializer.Initialize(builder);
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             var host = builder.Build();
